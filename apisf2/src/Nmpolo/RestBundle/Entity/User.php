@@ -64,7 +64,7 @@ class User
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=10)
      *
      * @Constraints\NotNull
      * @Constraints\NotBlank
@@ -72,15 +72,15 @@ class User
      */
     private $name;
     /**
-     * @var Groups $Groups
+     * @var Groups $groups
      *
      * @ORM\ManyToOne(targetEntity="Groups", inversedBy="users")
      */
-    private $Groups;
+    private $groups;
 
-    public function __construct(Groups $Groups)
+    public function __construct(Groups $groups)
     {
-        $this->Groups = $Groups;
+        $this->Groups = $groups;
     }
 
     /**
@@ -192,9 +192,9 @@ class User
      * @param Nmpolo\RestBundle\Entity\Groups $Groups
      * @return User
      */
-    public function setGroups(\Nmpolo\RestBundle\Entity\Groups $Groups = null)
+    public function setGroups(\Nmpolo\RestBundle\Entity\Groups $groups = null)
     {
-        $this->Groups = $Groups;
+        $this->Groups = $groups;
 
         return $this;
     }
@@ -206,6 +206,6 @@ class User
      */
     public function getGroups()
     {
-        return $this->Groups;
+        return $this->groups;
     }
 }
