@@ -1,0 +1,7 @@
+groups:
+    type: rest
+    resource: nmpolo_rest.controller.groups
+user:
+    type: rest
+    resource: nmpolo_rest.controller.user
+    parent: groups

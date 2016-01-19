@@ -1,0 +1,20 @@
+services:
+    nmpolo_rest.controller.groups:
+        class: Nmpolo\RestBundle\Controller\GroupsController
+        arguments: [@doctrine.orm.entity_manager, @nmpolo_rest.repo.groups, @form.factory, @router]
+    nmpolo_rest.controller.user:
+        class: Nmpolo\RestBundle\Controller\UserController
+        arguments: [@doctrine.orm.entity_manager, @nmpolo_rest.repo.user, @form.factory, @router]
+
+    nmpolo_rest.repo.groups:
+        class: Nmpolo\RestBundle\Entity\GroupsRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Nmpolo\RestBundle\Entity\Groups
+    nmpolo_rest.repo.user:
+        class: Nmpolo\RestBundle\Entity\UserRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments:
+            - Nmpolo\RestBundle\Entity\User
